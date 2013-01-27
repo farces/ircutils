@@ -61,14 +61,14 @@ class Connection(asynchat.async_chat):
     def found_terminator(self):
         """ Activated when ``\\r\\n`` is encountered. Do not call directly. """
 
-        self.incoming2 = []
-        for x in self.incoming:
+        self.decoded = []
+        for part in self.incoming:
             try:
-                self.incoming2.append(x.decode('utf-8'))
-            except UnicodeDecodeError as ex:
-                self.incoming2.append(x.decode('latin1'))
+                self.decoded.append(part.decode('utf-8'))
+            except UnicodeDecodeError:
+                self.decoded.append(part.decode('latin1'))
 
-        data = "".join(self.incoming2)
+        data = "".join(self.decoded)
 
         self.incoming = []
         prefix, command, params = protocol.parse_line(data)
