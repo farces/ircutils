@@ -12,7 +12,7 @@ import collections
 import re
 import traceback
 
-import ircutils.protocol as protocol
+from . import protocol
 
 
 class EventDispatcher(object):

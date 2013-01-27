@@ -14,8 +14,8 @@ else:
     ssl_available = True
     import errno
 
-import ircutils.protocol as protocol
-import ircutils.responses as responses
+from . import protocol
+from . import responses
 
 
 class Connection(asynchat.async_chat):
@@ -80,7 +80,7 @@ class Connection(asynchat.async_chat):
     
     
     def handle_error(self):
-        raise # Causes the error to propagate. I hate the compact traceback
+        raise() # Causes the error to propagate. I hate the compact traceback
               # that asyncore uses.
     
     

@@ -7,9 +7,8 @@ try:
 except ImportError:
     import dummy_threading as threading
 
-import ircutils.client as client
-import ircutils.events as events
-
+from . import client
+from . import events
 
 def threaded(func):
     """ Decorator that causes a callable to become threaded. This is useful to 
