@@ -98,7 +98,7 @@ class Connection(asynchat.async_chat):
             >>> self.execute("PRIVMSG", "#channel", trailing="Hello!")
         
         """
-        params = filter(lambda x:x is not None, params)
+        params = [x for x in params if x is not None]
         if "trailing" in kwargs:
             params = list(params)
             params.append(":%s" % kwargs["trailing"])

@@ -134,7 +134,7 @@ class SimpleClient(object):
         if channel is not None:
             # Builds a handler on-the-fly for joining init channels
             
-            if isinstance(channel, basestring):
+            if isinstance(channel, str):
                 channels = [channel]
             else:
                 channels = channel
